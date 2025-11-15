@@ -20,7 +20,9 @@ type ProductInput struct {
 }
 
 func CreateProduct(input ProductInput) *Product {
+	id := uuid.New()
 	return &Product{
+		ID:          id,
 		Name:        input.Name,
 		Description: input.Description,
 		Price:       input.Price,

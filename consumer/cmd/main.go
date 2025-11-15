@@ -10,9 +10,14 @@ import (
 	"github.com/afiflampard/boilerplate-domain/infra/rabbit"
 	"github.com/afiflampard/boilerplate-domain/product"
 	"github.com/cloudwego/hertz/pkg/app/server"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Printf("⚠️  No .env file found (using system env)")
+	}
 	cfg := config.LoadConfig()
 	h := server.New(server.WithHostPorts(":" + cfg.AppPort))
 

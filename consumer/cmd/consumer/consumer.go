@@ -40,7 +40,7 @@ func (c *Consumer) listenQueue(
 		return err
 	}
 
-	if err := ch.ExchangeDeclare(exchange, "direct", true, false, false, false, nil); err != nil {
+	if err := ch.ExchangeDeclare(exchange, "topic", true, false, false, false, nil); err != nil {
 		return err
 	}
 

@@ -15,5 +15,6 @@ func NewProductRepositoryImpl(db *gorm.DB) ProductRepository {
 }
 
 func (pr *ProductRepositoryImpl) Create(product *ProductInput) error {
-	return pr.db.Create(product).Error
+	products := CreateProduct(*product)
+	return pr.db.Create(products).Error
 }

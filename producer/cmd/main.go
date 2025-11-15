@@ -9,10 +9,15 @@ import (
 	"github.com/afiflampard/boilerplate/cmd/config"
 	"github.com/afiflampard/boilerplate/cmd/routes"
 	"github.com/cloudwego/hertz/pkg/app/server"
+	"github.com/joho/godotenv"
 )
 
 func main() {
 	ctx := context.Background()
+	err := godotenv.Load()
+	if err != nil {
+		log.Printf("⚠️  No .env file found (using system env)")
+	}
 	cfg := config.LoadConfig()
 
 	db, err := gorm.InitPostgres(cfg.Postgres)

@@ -31,13 +31,14 @@ require (
 	golang.org/x/sys v0.28.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
 	google.golang.org/protobuf v1.34.1 // indirect
+	gorm.io/driver/postgres v1.6.0 // indirect
 )
 
 require (
 	github.com/afiflampard/boilerplate-domain v0.0.0
 	github.com/cloudwego/hertz v0.10.3
+	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
-	gorm.io/driver/postgres v1.6.0
 	gorm.io/gorm v1.31.1
 )
 
