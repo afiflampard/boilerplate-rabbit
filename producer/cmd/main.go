@@ -25,7 +25,7 @@ func main() {
 		log.Fatalf("❌ Failed to connect to RabbitMQ: %v", err)
 	}
 
-	h := server.Default()
+	h := server.New(server.WithHostPorts(":" + cfg.AppPort))
 	routes.SetupRouter(ctx, h, db, rabbitMQ)
 	h.Spin()
 }

@@ -1,8 +1,8 @@
 package consumer
 
 import (
-	"github.com/afiflampard/boilerplate-consumer/config"
-	"github.com/afiflampard/boilerplate-consumer/service"
+	"github.com/afiflampard/boilerplate-consumer/cmd/config"
+	"github.com/afiflampard/boilerplate-consumer/cmd/service"
 	"github.com/afiflampard/boilerplate-domain/infra/logger"
 	"github.com/rabbitmq/amqp091-go"
 )
