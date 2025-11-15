@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: emr_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: emr_user
+      POSTGRES_PASSWORD: emr_password
+      POSTGRES_DB: emr_ok
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - emr_network
+
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: emr_rabbitmq
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: emr_user
+      RABBITMQ_DEFAULT_PASS: emr_password
+      RABBITMQ_DEFAULT_VHOST: /
+    ports:
+      - "5672:5672"   # AMQP port (for Go services)
+      - "15672:15672" # Management UI
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - emr_network
+
+networks:
+  emr_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  rabbitmq_data:
